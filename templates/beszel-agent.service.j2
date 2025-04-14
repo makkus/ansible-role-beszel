@@ -5,8 +5,53 @@ Wants=network-online.target
 
 [Service]
 ExecStart={{ beszel_install_dir }}/beszel-agent {{ beszel_args | trim }}
+
+# Required environment variables
+{% if beszel_port | length > 0 %}
 Environment="PORT={{ beszel_port }}"
+{% endif %}
+{% if beszel_public_key | length > 0 %}
 Environment="KEY={{ beszel_public_key }}"
+{% endif %}
+
+# Optional environment variables
+{% if beszel_key_file | length > 0 %}
+Environment="KEY_FILE={{ beszel_key_file }}"
+{% endif %}
+{% if beszel_listen | length > 0 %}
+Environment="LISTEN={{ beszel_listen }}"
+{% endif %}
+{% if beszel_network | length > 0 %}
+Environment="NETWORK={{ beszel_network }}"
+{% endif %}
+{% if beszel_docker_host | length > 0 %}
+Environment="DOCKER_HOST={{ beszel_docker_host }}"
+{% endif %}
+{% if beszel_extra_filesystems | length > 0 %}
+Environment="EXTRA_FILESYSTEMS={{ beszel_extra_filesystems }}"
+{% endif %}
+{% if beszel_filesystem | length > 0 %}
+Environment="FILESYSTEM={{ beszel_filesystem }}"
+{% endif %}
+{% if beszel_log_level | length > 0 %}
+Environment="LOG_LEVEL={{ beszel_log_level }}"
+{% endif %}
+{% if beszel_mem_calc | length > 0 %}
+Environment="MEM_CALC={{ beszel_mem_calc }}"
+{% endif %}
+{% if beszel_nics | length > 0 %}
+Environment="NICS={{ beszel_nics }}"
+{% endif %}
+{% if beszel_primary_sensor | length > 0 %}
+Environment="PRIMARY_SENSOR={{ beszel_primary_sensor }}"
+{% endif %}
+{% if beszel_sensors | length > 0 %}
+Environment="SENSORS={{ beszel_sensors }}"
+{% endif %}
+{% if beszel_sys_sensors | length > 0 %}
+Environment="SYS_SENSORS={{ beszel_sys_sensors }}"
+{% endif %}
+
 Restart=on-failure
 RestartSec=5
 StateDirectory=beszel-agent

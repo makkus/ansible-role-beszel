@@ -9,10 +9,6 @@ beszel_state: present
 # Version of the Beszel binary agent to install
 # Can be a specific version from GitHub (e.g., v0.9.1)
 beszel_version: latest
-# Port for the Beszel binary agent to listen on
-beszel_port: 45876
-# Public key used to authenticate the Beszel binary agent to the Hub
-beszel_public_key: ""
 # Directory to install the Beszel binary agent into
 beszel_install_dir: /usr/local/bin
 # Custom arguments for the Beszel binary agent
@@ -21,3 +17,33 @@ beszel_args: ""
 beszel_service_enabled: true
 # State of the Beszel binary agent systemd service
 beszel_service_state: started
+
+# Beszel Agent Environment Variables
+# Port for the Beszel binary agent to listen on (deprecated, use beszel_listen instead)
+beszel_port: 45876
+# Public key used to authenticate the Beszel binary agent to the Hub
+beszel_public_key: ""
+# Path to file containing public keys to use for authentication
+beszel_key_file: ""
+# Port or host:port to listen on
+beszel_listen: ""
+# Network for listener ("tcp", "tcp4", "tcp6", or "unix")
+beszel_network: ""
+# Overrides the docker host (docker.sock) if using a proxy
+beszel_docker_host: ""
+# Monitor extra disks if using binary
+beszel_extra_filesystems: ""
+# Device, partition, or mount point to use for root disk stats
+beszel_filesystem: ""
+# Logging level ("debug", "info", "warn", "error")
+beszel_log_level: ""
+# Overrides the default memory calculation ("htop")
+beszel_mem_calc: ""
+# Whitelist of network interfaces to monitor for bandwidth
+beszel_nics: ""
+# Display specific temperature sensor in 'All Systems' table
+beszel_primary_sensor: ""
+# Whitelist of temperature sensors to monitor
+beszel_sensors: ""
+# Overrides sys path for sensors
+beszel_sys_sensors: ""
