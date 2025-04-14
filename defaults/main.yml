@@ -26,7 +26,7 @@ beszel_public_key: ""
 # Path to file containing public keys to use for authentication
 beszel_key_file: ""
 # Port or host:port to listen on
-beszel_listen: ""
+beszel_listen: 45876
 # Network for listener ("tcp", "tcp4", "tcp6", or "unix")
 beszel_network: ""
 # Overrides the docker host (docker.sock) if using a proxy
