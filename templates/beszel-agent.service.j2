@@ -7,7 +7,7 @@ Wants=network-online.target
 ExecStart={{ beszel_install_dir }}/beszel-agent {{ beszel_args | trim }}
 
 # Required environment variables
-{% if beszel_port | length > 0 %}
+{% if (beszel_port is number and beszel_port != 0) or (beszel_port is string and beszel_port | length > 0) %}
 Environment="PORT={{ beszel_port }}"
 {% endif %}
 {% if beszel_public_key | length > 0 %}
@@ -18,7 +18,7 @@ Environment="KEY={{ beszel_public_key }}"
 {% if beszel_key_file | length > 0 %}
 Environment="KEY_FILE={{ beszel_key_file }}"
 {% endif %}
-{% if beszel_listen | length > 0 %}
+{% if (beszel_listen is number and beszel_listen != 0) or (beszel_listen is string and beszel_listen | length > 0) %}
 Environment="LISTEN={{ beszel_listen }}"
 {% endif %}
 {% if beszel_network | length > 0 %}
